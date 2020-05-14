@@ -12,6 +12,9 @@ import { useDispatch } from 'react-redux';
 
 import ImagesOverviewScreen from '../screens/syt/ImagesOverviewScreen';
 import ImageDetailScreen from '../screens/syt/ImageDetailScreen';
+import UserImagesScreen from '../screens/user/UserImagesScreen';
+import EditImageScreen from '../screens/user/EditImageScreen';
+import UserProfileScreen from '../screens/user/UserProfileScreen';
 import AuthScreen from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
 import Colors from '../constants/Colors';
@@ -57,7 +60,7 @@ const ImagesNavigator = createStackNavigator(
     navigationOptions: {
       drawerIcon: drawerConfig => (
         <Ionicons
-          name={Platform.OS === 'android' ? 'md-images' : 'ios-images'}
+          name={Platform.OS === 'android' ? 'md-book' : 'ios-book'}
           size={23}
           color={drawerConfig.tintColor}
         />
@@ -65,18 +68,18 @@ const ImagesNavigator = createStackNavigator(
     },
     defaultNavigationOptions: defaultNavOptions
   }
-);
+); */
 
-const AdminNavigator = createStackNavigator(
+const GalleryNavigator = createStackNavigator(
   {
-    UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen
+    UserImages: UserImagesScreen,
+    EditImages: EditImageScreen
   },
   {
     navigationOptions: {
       drawerIcon: drawerConfig => (
         <Ionicons
-          name={Platform.OS === 'android' ? 'md-book' : 'ios-book'}
+          name={Platform.OS === 'android' ? 'md-images' : 'ios-images'}
           size={23}
           color={drawerConfig.tintColor}
         />
@@ -104,13 +107,13 @@ const UserNavigator = createStackNavigator(
     defaultNavigationOptions: defaultNavOptions
   }
 );
- */
+
 const SytNavigator = createDrawerNavigator(
   {
     "Home ": ImagesNavigator,
-    //"Gallery ": AdminNavigator,
+    "Gallery ": GalleryNavigator,
     //"Explore ": ProductsNavigator,
-    //"Profile " : UserNavigator
+    "Profile " : UserNavigator
   },
   {
     contentOptions: {
