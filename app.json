@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "syt_dev",
-    "slug": "syt_dev",
+    "name": "syt_react_native_app",
+    "slug": "syt_react_native_app",
     "platforms": [
       "ios",
       "android",
