@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-
+import Url from '../../constants/ApiUrl';
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
 export const AUTHENTICATE = 'AUTHENTICATE';
@@ -7,16 +7,16 @@ export const LOGOUT = 'LOGOUT';
 
 let timer;
 
-export const authenticate = (token, userId) => {
+export const authenticate = (token, userId, username, imageUrl) => {
   return dispatch => {
-    dispatch({ type: AUTHENTICATE, token: token, userId: userId});
+    dispatch({ type: AUTHENTICATE, token: token, userId: userId, username: username, imageUrl: imageUrl});
   };
 };
 
 export const login = (username, password) => {
   return async dispatch => {
     const response = await fetch(
-      'http://showyourtalent.herokuapp.com/api/v1/login',
+      `${Url.production}login`,
       {
         method: 'POST',
         headers: {
@@ -36,13 +36,16 @@ export const login = (username, password) => {
     }
 
     const resData = await response.json();
+    console.log(resData);
     dispatch(
       authenticate(
         resData.token,
-        resData.user_id
+        resData.user_id,
+        resData.username,
+        resData.image_url
       )
     );
-    saveDataToStorage(resData.token, resData.user_id); 
+    saveDataToStorage(resData.token, resData.user_id, resData.username, resData.image_url); 
   };
 };
 
@@ -51,12 +54,14 @@ export const login = (username, password) => {
   return { type: LOGOUT };
 };
 
-const saveDataToStorage = (token, userId) => {
+const saveDataToStorage = (token, userId, username, imageUrl) => {
   AsyncStorage.setItem(
     'userData',
     JSON.stringify({
       token: token,
-      userId: userId
+      userId: userId,
+      username: username,
+      imageUrl: imageUrl
     })
   );
 };

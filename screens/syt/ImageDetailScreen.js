@@ -6,6 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import Url from '../../constants/ApiUrl';
 
 const ImageDetailScreen = props => {
   const imageId = props.navigation.getParam('imageId');
@@ -16,7 +17,7 @@ const ImageDetailScreen = props => {
 
   return (
     <ScrollView>
-      <Image style={styles.image} source={{ uri: `http://showyourtalent.herokuapp.com/media/${selectedImage.imageUrl}` }} />
+      <Image style={styles.image} source={{ uri: `${Url.webUrl}/media/${selectedImage.imageUrl}` }} />
       <Text style={styles.description}>{selectedImage.description}</Text>
     </ScrollView>
   );

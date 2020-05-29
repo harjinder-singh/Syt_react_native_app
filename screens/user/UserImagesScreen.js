@@ -92,7 +92,7 @@ UserImagesScreen.navigationOptions = navData => {
           title="Add"
           iconName={Platform.OS === 'android' ? 'md-add' : 'ios-add'}
           onPress={() => {
-            navData.navigation.navigate('EditImage');
+            navData.navigation.navigate('AddImage');
           }}
         />
       </HeaderButtons>

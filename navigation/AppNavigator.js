@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import ImagesOverviewScreen from '../screens/syt/ImagesOverviewScreen';
 import ImageDetailScreen from '../screens/syt/ImageDetailScreen';
 import UserImagesScreen from '../screens/user/UserImagesScreen';
-import EditImageScreen from '../screens/user/EditImageScreen';
+import AddImageScreen from '../screens/user/AddImageScreen';
 import UserProfileScreen from '../screens/user/UserProfileScreen';
 import AuthScreen from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
@@ -73,7 +73,7 @@ const ImagesNavigator = createStackNavigator(
 const GalleryNavigator = createStackNavigator(
   {
     UserImages: UserImagesScreen,
-    EditImages: EditImageScreen
+    AddImage: AddImageScreen
   },
   {
     navigationOptions: {

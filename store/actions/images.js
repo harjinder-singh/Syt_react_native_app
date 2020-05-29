@@ -1,6 +1,7 @@
 import Image from '../../models/image';
 import User from '../../models/user';
 import { combineReducers } from 'redux';
+import Url from '../../constants/ApiUrl';
 
 export const DELETE_IMAGE = 'DELETE_IMAGE';
 export const CREATE_IMAGE = 'CREATE_IMAGE';
@@ -11,9 +12,10 @@ export const fetchImages = () => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     const userId = getState().auth.userId;
+    console.log('Token is' + token);
     try {
       const response = await fetch(
-        'http://showyourtalent.herokuapp.com/api/v1/images',
+        `${Url.production}images`,
         {
           method: 'GET',
           headers: {
@@ -36,7 +38,6 @@ export const fetchImages = () => {
       usersData = resData.users;
       const loadedImages = [];
       const users = [];
-      //console.log(usersData);
 
       for (const key in images) {
         loadedImages.push(

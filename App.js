@@ -7,11 +7,13 @@ import ReduxThunk from 'redux-thunk';
 
 import imagesReducer from './store/reducers/images';
 import authReducer from './store/reducers/auth';
+import userReducer from './store/reducers/user';
 import NavigationContainer from './navigation/NavigationContainer';
 
 const rootReducer = combineReducers({
   images: imagesReducer,
-  auth: authReducer
+  auth: authReducer,
+  user: userReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

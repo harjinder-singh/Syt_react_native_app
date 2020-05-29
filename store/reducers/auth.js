@@ -2,7 +2,9 @@ import { AUTHENTICATE, LOGOUT } from '../actions/auth';
 
 const initialState = {
   token: null,
-  userId: null
+  userId: null,
+  username: null,
+  imageUrl: null
 };
 
 export default (state = initialState, action) => {
@@ -10,7 +12,9 @@ export default (state = initialState, action) => {
     case AUTHENTICATE:
       return {
         token: action.token,
-        userId: action.userId
+        userId: action.userId,
+        username: action.username,
+        imageUrl: action.imageUrl
       };
     case LOGOUT:
       return initialState;

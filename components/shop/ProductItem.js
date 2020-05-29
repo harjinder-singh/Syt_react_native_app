@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Card from '../UI/Card';
+import Url from '../../constants/ApiUrl';
 
 const ProductItem = props => {
   
@@ -35,11 +36,11 @@ const ProductItem = props => {
         <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
             <View style={styles.imageHeader}>
-              <Image style={styles.imageProfile} source={{ uri: `http://showyourtalent.herokuapp.com/media/${userImageUrl}` }} />
+              <Image style={styles.imageProfile} source={{ uri: `${Url.webUrl}/media/${userImageUrl}` }} />
               <Text style={styles.username}>{username}</Text>
             </View>
             <View style={styles.imageContainer}>
-              <Image style={styles.image} source={{ uri: `http://showyourtalent.herokuapp.com/media/${props.image}` }} />
+              <Image style={styles.image} source={{ uri: `${Url.webUrl}/media/${props.image}` }} />
             </View>
             {/* <View style={styles.details}>
               <Text style={styles.title}>{props.description}</Text>
