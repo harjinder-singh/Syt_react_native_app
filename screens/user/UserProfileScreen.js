@@ -166,6 +166,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize:20,
     fontWeight:'bold'
+  },
+  centered: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center' 
   }
 });
 

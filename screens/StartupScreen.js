@@ -16,20 +16,21 @@ const StartupScreen = props => {
   useEffect(() => {
     const tryLogin = async () => {
       const userData = await AsyncStorage.getItem('userData');
+  
       if (!userData) {
         props.navigation.navigate('Auth');
         return;
       }
       const transformedData = JSON.parse(userData);
-      const { token, userId } = transformedData;
+      const { token, userId, username, imageUrl} = transformedData;
 
-      if (!token || !userId) {
+      if (!token || !userId || !username || !imageUrl) {
         props.navigation.navigate('Auth');
         return;
       }
       
       props.navigation.navigate('Syt');
-      dispatch(authActions.authenticate(token, userId));
+      dispatch(authActions.authenticate(token, userId, username, imageUrl));
     };
 
     tryLogin();

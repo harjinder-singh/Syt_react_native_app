@@ -9,14 +9,17 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useSelector} from 'react-redux';
 import Card from '../../components/UI/Card';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import Colors from '../../constants/Colors';
+import Url from '../../constants/ApiUrl';
 
 const AddImageScreen = props => {
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const token = useSelector(state => state.auth.token);
 
   const pickImage = async () => {
     const {
@@ -80,7 +83,7 @@ const AddImageScreen = props => {
   };
 
   async function uploadImageAsync(uri) {
-    let apiUrl = 'http://sytofficial.pagekite.me/api/v1/imageUpload';
+    let apiUrl = `${Url.production}imageUpload`;
 
     let uriParts = uri.split('.');
     let fileType = uriParts[uriParts.length - 1];
@@ -91,7 +94,6 @@ const AddImageScreen = props => {
       name: `photo.${fileType}`,
       type: `image/${fileType}`,
     });
-    formData.append('user', '2');
     formData.append('description', 'Hello');
 
     let options = {
@@ -100,6 +102,7 @@ const AddImageScreen = props => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
+        'Authorization': `Token ${token}`
       },
     };
 
